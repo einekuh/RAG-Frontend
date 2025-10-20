@@ -38,9 +38,9 @@
 
 
 
-    <main class="chat">
+    <main class="main">
       <div class="chat-scroll">
-        <div class="placeholder">Chat mit LLM, scrollbar</div>
+        
       </div>
     </main>
 
@@ -48,8 +48,8 @@
     
     <footer class="inputbar">
       <form class="input-form">
-        <textarea placeholder="Textfeld, um Fragen zu stellen"></textarea>
-        <button type="submit">Senden</button>
+        <textarea id="userQuery", placeholder="Why are apples sweet?"></textarea>
+        <button id="submitBTN", type="submit", onclick="addUserQueryToChat(getUserQuery())">   -->   </button>
       </form>
     </footer>
 

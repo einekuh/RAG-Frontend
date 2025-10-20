@@ -1,4 +1,59 @@
-// ===== Konfiguration =====
+const submitBTN = document.getElementById("submitBTN");
+
+
+submitBTN.addEventListener("click", addUserQueryToChat(getUserQuery()));
+
+
+
+function getUserQuery() {
+    var userQuery = document.getElementById("userQuery").innerHTML;
+    return userQuery;
+}
+
+function addUserQueryToChat(query){
+    document.getElementByClassName("chat-scroll").innerHTML = query;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*// ===== Konfiguration =====
 // ===== Upload-Submit (API-Call) =====
 if (uploadForm) {
 uploadForm.addEventListener('submit', async (e) => {
@@ -83,4 +138,4 @@ renderFiles([]);
 activeChatId = demoChats[0].id;
 renderChats(demoChats);
 renderMessages(activeChatId);
-})();
+})();*/

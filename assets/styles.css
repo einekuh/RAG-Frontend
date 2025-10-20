@@ -12,7 +12,7 @@ body{margin:0;padding:16px;background:#0e1730;color:#e8eefc;font:16px/1.4 system
   gap:16px;
   grid-template-areas:
     "settings header files"
-    "sidebar  chat   files"
+    "sidebar  main   files"
     "sidebar  input  files";
 }
 
@@ -21,13 +21,38 @@ body{margin:0;padding:16px;background:#0e1730;color:#e8eefc;font:16px/1.4 system
 .header{ grid-area:header; background:#1f2a4a; border-radius:12px; padding:12px }
 .sidebar{ grid-area:sidebar; background:#1f2a4a; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:10px }
 .files{ grid-area:files; background:#1f2a4a; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:10px }
-.chat{ grid-area:chat; background:#1f2a4a; border-radius:12px; padding:12px; overflow:hidden }
+.main{ grid-area:main; background:#1f2a4a; border-radius:12px; padding:12px; overflow:hidden }
 .inputbar{ grid-area:input; background:#1f2a4a; border-radius:12px; padding:12px }
 
 /* Scrollcontainer sichtbar machen */
 .sidebar-list, .file-list, .chat-scroll{ background:#2a3761; border-radius:10px; padding:10px; overflow:auto; height:100% }
 
 /* Ein paar Basics */
-.search input, .input-form textarea{ width:100%; padding:10px; border-radius:8px; border:none; background:#2a3761; color:#e8eefc }
+.search input{ width:100%; padding:10px; border-radius:8px; border:none; background:#2a3761; color:#e8eefc }
 .settings-btn, .upload-form button, .input-form button{ padding:10px 12px; border-radius:8px; border:none; background:#2a3761; color:#e8eefc }
 .placeholder{ opacity:.7; text-align:center; margin-top:8px }
+
+.input-form textarea{flex: 1 1 auto; min-height: 48px; max-height: 72px; width: auto; padding:10px; border-radius:8px; border:none; background:#2a3761; color:#e8eefc }
+
+
+/* Eingabe unten: Button rechts, in einer Zeile */
+.input-form{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;      /* wichtig: nicht umbrechen */
+  height: auto;           /* falls vorher 100% – rausnehmen */
+}
+.input-form button{
+  flex: 0 0 auto;         /* feste Breite, kein Strecken */
+  height: 48px;
+  margin-left: 10px;
+  cursor: pointer;
+  outline: none;     /* kleiner Abstand zum Textfeld */
+}
+.input-form button:hover {background-color: #323f69}
+
+.input-form button:active {
+  background-color: #323f69;
+  transform: translateY(0.5px);
+}
