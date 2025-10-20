@@ -1,0 +1,33 @@
+/* Reset + Farben */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;padding:16px;background:#0e1730;color:#e8eefc;font:16px/1.4 system-ui}
+
+/* >>> Das entscheidende Grid <<< */
+.app-grid{
+  height:calc(100vh - 32px);
+  display:grid;
+  grid-template-columns: 220px 1fr 320px;
+  grid-template-rows: 72px 1fr 96px;
+  gap:16px;
+  grid-template-areas:
+    "settings header files"
+    "sidebar  chat   files"
+    "sidebar  input  files";
+}
+
+/* Bereiche einfärben, damit du’s SIEHST */
+.settings{ grid-area:settings; background:#1f2a4a; border-radius:12px; padding:12px }
+.header{ grid-area:header; background:#1f2a4a; border-radius:12px; padding:12px }
+.sidebar{ grid-area:sidebar; background:#1f2a4a; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:10px }
+.files{ grid-area:files; background:#1f2a4a; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:10px }
+.chat{ grid-area:chat; background:#1f2a4a; border-radius:12px; padding:12px; overflow:hidden }
+.inputbar{ grid-area:input; background:#1f2a4a; border-radius:12px; padding:12px }
+
+/* Scrollcontainer sichtbar machen */
+.sidebar-list, .file-list, .chat-scroll{ background:#2a3761; border-radius:10px; padding:10px; overflow:auto; height:100% }
+
+/* Ein paar Basics */
+.search input, .input-form textarea{ width:100%; padding:10px; border-radius:8px; border:none; background:#2a3761; color:#e8eefc }
+.settings-btn, .upload-form button, .input-form button{ padding:10px 12px; border-radius:8px; border:none; background:#2a3761; color:#e8eefc }
+.placeholder{ opacity:.7; text-align:center; margin-top:8px }

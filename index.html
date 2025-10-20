@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Layout-Test</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/app.js"></script>
+</head>
+
+
+
+<body>
+  <div class="app-grid">
+
+
+    <aside class="settings"><button class="settings-btn">Einstellungen</button></aside>
+
+    <header class="header">
+      <form class="search"><input type="search" placeholder="Suchleiste, um frühere Chats zu suchen" /></form>
+    </header>
+
+    <aside class="sidebar">
+      <div class="sidebar-title">alle früheren Chats</div>
+      <div class="sidebar-list"><ul><li class="empty">Noch keine Chats</li></ul></div>
+    </aside>
+
+    <aside class="files">
+      <div class="files-title">alle hochgeladenen Dateien</div>
+      <div class="dropzone">Dateien per Drag &amp; Drop hier ablegen</div>
+      <form class="upload-form">
+        <input type="file" multiple hidden>
+        <button type="button">Dateien auswählen</button>
+        <button type="submit">Hochladen</button>
+      </form>
+      <div class="file-list"><div class="file-row empty">Noch keine Dateien</div></div>
+    </aside>
+
+
+
+    <main class="chat">
+      <div class="chat-scroll">
+        <div class="placeholder">Chat mit LLM, scrollbar</div>
+      </div>
+    </main>
+
+
+    
+    <footer class="inputbar">
+      <form class="input-form">
+        <textarea placeholder="Textfeld, um Fragen zu stellen"></textarea>
+        <button type="submit">Senden</button>
+      </form>
+    </footer>
+
+
+  </div>
+</body>
+</html>
