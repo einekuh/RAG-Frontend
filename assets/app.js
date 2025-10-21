@@ -1,22 +1,56 @@
-const submitBTN = document.getElementById("submitBTN");
+//py -m http.server 5173
+// http://localhost:5173/
 
 
-submitBTN.addEventListener("click", addUserQueryToChat(getUserQuery()));
+document.addEventListener("DOMContentLoaded", () => {
+  const submitBTN   = document.getElementById("submitBTN");
+  const messageForm = document.getElementById("messageForm");
+  const userInput   = document.getElementById("userQuery");
+  const chatScroll  = document.querySelector(".chat-scroll");
 
 
+  messageForm.addEventListener("submit", (e) => {
+    e.preventDefault();                 // verhindert Reload
+    const query = userInput.value.trim();
+    if (!query) return;
 
-function getUserQuery() {
-    var userQuery = document.getElementById("userQuery").innerHTML;
-    return userQuery;
-}
-
-function addUserQueryToChat(query){
-    document.getElementByClassName("chat-scroll").innerHTML = query;
-}
-
+    addUserQueryToChat(query);
+    userInput.value = "";               // Eingabe leeren
+  });
 
 
+  function addUserQueryToChat(text) {
+    // Neue Chat-Bubble anhängen (nicht alles überschreiben)
+    const msg = document.createElement("div");
+    msg.className = "msg user";
 
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    meta.textContent = `Du • ${formatTime(new Date())}`;
+
+    //bubble.textContent = text;
+
+    bubble.appendChild(meta);
+    bubble.appendChild(document.createTextNode(text));
+
+    msg.appendChild(bubble);
+    chatScroll.appendChild(msg);
+
+    // Auto-Scroll ans Ende
+    chatScroll.scrollTop = chatScroll.scrollHeight;
+  }
+
+  function formatTime(d){
+  // 2-stellige Uhrzeit HH:MM, lokales Format
+  const h = String(d.getHours()).padStart(2, "0");
+  const m = String(d.getMinutes()).padStart(2, "0");
+  return `${h}:${m}`;
+ }
+ 
+});
 
 
 

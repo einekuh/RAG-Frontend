@@ -1,3 +1,5 @@
+
+
 /* Reset + Farben */
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -22,7 +24,7 @@ body{margin:0;padding:16px;background:#0e1730;color:#e8eefc;font:16px/1.4 system
 .sidebar{ grid-area:sidebar; background:#1f2a4a; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:10px }
 .files{ grid-area:files; background:#1f2a4a; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:10px }
 .main{ grid-area:main; background:#1f2a4a; border-radius:12px; padding:12px; overflow:hidden }
-.inputbar{ grid-area:input; background:#1f2a4a; border-radius:12px; padding:12px }
+.inputbar{ grid-area:input; background:#1f2a4a; border-radius:12px; padding:12px}
 
 /* Scrollcontainer sichtbar machen */
 .sidebar-list, .file-list, .chat-scroll{ background:#2a3761; border-radius:10px; padding:10px; overflow:auto; height:100% }
@@ -32,8 +34,30 @@ body{margin:0;padding:16px;background:#0e1730;color:#e8eefc;font:16px/1.4 system
 .settings-btn, .upload-form button, .input-form button{ padding:10px 12px; border-radius:8px; border:none; background:#2a3761; color:#e8eefc }
 .placeholder{ opacity:.7; text-align:center; margin-top:8px }
 
-.input-form textarea{flex: 1 1 auto; min-height: 48px; max-height: 72px; width: auto; padding:10px; border-radius:8px; border:none; background:#2a3761; color:#e8eefc }
 
+
+
+
+/*#########################################################################################################################*/
+
+/*.input-form input{flex: 1 1 auto; min-height: 48px; max-height: 72px; width: auto; padding:10px; border-radius:8px; border:none; background:#2a3761; color:#e8eefc }*/
+.input-form input[type="text"],
+.input-form input#userQuery{
+  flex:1 1 auto;
+  width:auto;
+  height:48px;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #2c3a63;    /* statt var(--border) */
+  background:#2a3761;          /* statt var(--panel-2) */
+  color:#e8eefc;                /* statt var(--text) */
+  outline:none;
+}
+/* Fokus-Style (vorher evtl. nur für textarea definiert) */
+.input-form input[type="text"]:focus{
+  outline:2px solid #3b82f6;   /* statt var(--accent) */
+  outline-offset:2px;
+}
 
 /* Eingabe unten: Button rechts, in einer Zeile */
 .input-form{
@@ -55,4 +79,58 @@ body{margin:0;padding:16px;background:#0e1730;color:#e8eefc;font:16px/1.4 system
 .input-form button:active {
   background-color: #323f69;
   transform: translateY(0.5px);
+}
+
+
+/*###########################################################################################################*/
+/* Abstand + Ausrichtung pro Nachricht */
+.msg{
+  display:flex;
+  margin: 10px 0;
+}
+.msg.user{ justify-content: flex-end; }      /* rechts ausrichten */
+.msg.assistant{ justify-content: flex-start; }/* links ausrichten */
+
+/* Bubble-Grundstil */
+.bubble{
+  max-width: min(720px, 80%);
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border, #2c3a63);
+  background: linear-gradient(180deg, rgba(42,55,97,.95), rgba(35,47,84,.95));
+  color: var(--text, #e8eefc);
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+}
+
+/* Varianten: User/Assistant */
+.msg.user .bubble{
+  background: linear-gradient(180deg, #2d3f75, #263664);
+  border-color: #314373;
+}
+.msg.assistant .bubble{
+  background: linear-gradient(180deg, #2a3761, #233156);
+  border-color: #2c3a63;
+}
+
+/* kleine Details */
+.bubble + .bubble{ margin-top: 6px; }        /* bei Multi-Bubbles */
+.bubble:hover{ filter: brightness(1.03); }   /* leichter Hover */
+.bubble:focus{ outline: 2px solid var(--accent, #3b82f6); }
+
+/* Optional: dezente „Sprechblasen“-Ecke (für User rechts) */
+.msg.user .bubble::after{
+  content:"";
+  position:absolute;
+  transform: translateY(6px);
+  border: 8px solid transparent;
+  border-left-color: #314373;
+  right: -8px;
+}
+.msg.user{ position: relative; } /* nötig für ::after-Position */
+
+
+.bubble .meta{
+  font-size: 12px;
+  opacity: .65;
+  margin-bottom: 6px;
 }
