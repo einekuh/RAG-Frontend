@@ -1,4 +1,5 @@
 //py -m http.server 5173
+// python3 -m http.server 5173
 // http://localhost:5173/
 
 
