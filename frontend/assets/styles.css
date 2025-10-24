@@ -29,8 +29,8 @@ body{margin:0;padding:16px;background:#0e1730;color:#e8eefc;font:16px/1.4 system
 
 
 /* Gesamter Files-Container reagiert auf DragOver */
-.files{ position:relative; }
-.files.is-dragover{
+.file-list{ position:relative; }
+.file-list.is-dragover{
   outline: 2px dashed #3b82f6;      /* Highlight beim Drag */
   outline-offset: -8px;
   filter: brightness(1.03);

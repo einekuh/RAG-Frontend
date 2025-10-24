@@ -85,7 +85,7 @@ function renderFilesFromServer(files) {
   function renderFilesPreview(files) {
     fileList.innerHTML = "";
     if (!files || files.length === 0) {
-      fileList.innerHTML = '<div class="file-row empty">Noch keine Dateien</div>';
+      fileList.innerHTML = '<div class="file-row empty">no files uploaded</div>';
       return;
     }
     [...files].forEach(f => {
@@ -97,17 +97,17 @@ function renderFilesFromServer(files) {
   }
 
   // Drag & Drop auf den GESAMTEN Container
-  if (filePanel) {
+  if (fileList) {
     ["dragenter","dragover","dragleave","drop"].forEach(evt =>
-      filePanel.addEventListener(evt, e => { e.preventDefault(); e.stopPropagation(); }, false)
+      fileList.addEventListener(evt, e => { e.preventDefault(); e.stopPropagation(); }, false)
     );
     ["dragenter","dragover"].forEach(evt =>
-      filePanel.addEventListener(evt, () => filePanel.classList.add("is-dragover"), false)
+      fileList.addEventListener(evt, () => fileList.classList.add("is-dragover"), false)
     );
     ["dragleave","drop"].forEach(evt =>
-      filePanel.addEventListener(evt, () => filePanel.classList.remove("is-dragover"), false)
+      fileList.addEventListener(evt, () => fileList.classList.remove("is-dragover"), false)
     );
-    filePanel.addEventListener("drop", e => {
+    fileList.addEventListener("drop", e => {
       const dropped = e.dataTransfer.files;
       if (!dropped || dropped.length === 0) return;
 
@@ -123,7 +123,7 @@ function renderFilesFromServer(files) {
     });
 
     // Optional: Klick auf leeren Bereich öffnet den Picker
-    filePanel.addEventListener("click", (e) => {
+    fileList.addEventListener("click", (e) => {
       const clickedButton = e.target.closest("button, a, input, label");
       if (!clickedButton && fileInput) fileInput.click();
     });
