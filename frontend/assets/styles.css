@@ -26,6 +26,48 @@ body{margin:0;padding:16px;background:#0e1730;color:#e8eefc;font:16px/1.4 system
 .main{ grid-area:main; background:#1f2a4a; border-radius:12px; padding:12px; overflow:hidden }
 .inputbar{ grid-area:input; background:#1f2a4a; border-radius:12px; padding:12px}
 
+
+
+/* Gesamter Files-Container reagiert auf DragOver */
+.files{ position:relative; }
+.files.is-dragover{
+  outline: 2px dashed #3b82f6;      /* Highlight beim Drag */
+  outline-offset: -8px;
+  filter: brightness(1.03);
+}
+
+/* Die Liste bleibt die sichtbare Fläche */
+.file-list{
+  flex:1;                            /* füllt den Rest */
+  overflow:auto;
+  background:#1f2a4a;
+  border:1px solid #2c3a63;
+  border-radius:14px;
+  padding:8px;
+}
+.file-list:hover{
+  filter:brightness(1.05);
+  cursor:pointer;
+}
+.upload-form{ display:flex; gap:10px; align-items:center; }
+
+.upload-form button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:auto;                /* Quadrat */
+  height:auto;
+  border:none;
+  border-radius:10px;
+  background:#3b82f6;        /* var(--accent) ggf. nutzen */
+  color:#fff;                /* steuert SVG-Farbe via currentColor */
+  cursor:pointer;
+}
+
+.upload-form button:hover{ filter:brightness(1.05); }
+.upload-form button:active{ transform: translateY(0.5px); }
+.upload-form button:focus{ outline:2px solid rgba(255,255,255,.35); outline-offset:2px; }
+
 /* Scrollcontainer sichtbar machen */
 .sidebar-list, .file-list, .chat-scroll{ background:#2a3761; border-radius:10px; padding:10px; overflow:auto; height:100% }
 
@@ -65,21 +107,26 @@ body{margin:0;padding:16px;background:#0e1730;color:#e8eefc;font:16px/1.4 system
   align-items: center;
   gap: 10px;
   flex-wrap: nowrap;      /* wichtig: nicht umbrechen */
-  height: auto;           /* falls vorher 100% – rausnehmen */
+  height: auto;          /* falls vorher 100% – rausnehmen */
+  
 }
-.input-form button{
-  flex: 0 0 auto;         /* feste Breite, kein Strecken */
-  height: 48px;
-  margin-left: 10px;
-  cursor: pointer;
-  outline: none;     /* kleiner Abstand zum Textfeld */
+.send-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:48px;                /* Quadrat */
+  height:48px;
+  border:none;
+  border-radius:10px;
+  background:#3b82f6;        /* var(--accent) ggf. nutzen */
+  color:#fff;                /* steuert SVG-Farbe via currentColor */
+  cursor:pointer;
 }
-.input-form button:hover {background-color: #323f69}
+.send-btn:hover{ filter:brightness(1.05); }
+.send-btn:active{ transform: translateY(0.5px); }
+.send-btn:focus{ outline:2px solid rgba(255,255,255,.35); outline-offset:2px; }
 
-.input-form button:active {
-  background-color: #323f69;
-  transform: translateY(0.5px);
-}
+
 
 
 /*###########################################################################################################*/

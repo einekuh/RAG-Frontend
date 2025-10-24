@@ -22,22 +22,30 @@
       </form>
     </header>
 
+    <!-- Linke Spalte: frühere Chats, scrollbar -->
     <aside class="sidebar">
       <div class="sidebar-title">alle früheren Chats</div>
-      <div class="sidebar-list"><ul><li class="empty">Noch keine Chats</li></ul></div>
+      <div class="sidebar-list">
+        
+      </div>
     </aside>
 
-    <aside class="files">
-      <div class="files-title">alle hochgeladenen Dateien</div>
-      <div class="dropzone">Dateien per Drag &amp; Drop hier ablegen</div>
-      <form class="upload-form">
-        <input type="file" multiple hidden>
-        <button type="button">Dateien auswählen</button>
-        <button type="submit">Hochladen</button>
-      </form>
-      <div class="file-list"><div class="file-row empty">Noch keine Dateien</div></div>
-    </aside>
 
+
+
+  <aside class="files" id="filePanel">
+  <div class="files-title">alle hochgeladenen Dateien</div>
+
+  <form class="upload-form" id="uploadForm">
+    <input type="file" id="fileInput" name="files" multiple hidden>
+    <button type="button" id="fileButton">Dateien auswählen</button>
+    <button type="submit" id="uploadButton">Hochladen</button>
+  </form>
+
+  <div class="file-list" id="fileList">
+    <div class="file-row empty">Noch keine Dateien</div>
+  </div>
+</aside>
 
 
     <main class="main">
@@ -49,7 +57,12 @@
     <footer class="inputbar">
       <form id="messageForm" class="input-form">
         <input id="userQuery" placeholder="Why are apples sweet?" type="text"></input>
-        <button id="submitBTN" type="submit">   sent   </button>
+          <button type="submit" id="submitBTN" class="send-btn" aria-label="Senden">
+            <!-- Papierflieger-Icon als SVG -->
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path d="M3 11.5l17-7-7 17-2.5-6.5L3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </button>     
       </form>
     </footer>
 
